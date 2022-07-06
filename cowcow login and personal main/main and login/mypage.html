@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mypage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #top {
+            background-color: black;
+        }
+
+        #topright {
+            margin: 0 auto;
+            width: 1000px;
+
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        #topright div {
+            color: white;
+
+            margin: 10px;
+            width: 100px;
+        }
+
+        #section1 {
+            /*
+        왜 top 50을 주면 해결되는지 질문하자.
+        */
+            top: 50px;
+            margin: 0 auto;
+            width: 1000px;
+
+            /*
+                위에 있는 요소를 position: fixed;를 이용하여 고정하면 왼쪽에 위치합니다.
+                left: 50%;를 추가하여 시작 위치를 정가운데로 만듭니다.
+                transform: translateX( -50% );를 추가하여 요소 크기의 50%만큼 왼쪽을 이동합니다.
+                */
+
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+
+            z-index: 1;
+
+            background-color: white;
+        }
+
+        /* fixed와 absolute는 top을 줘서 고정한다 */
+
+        #logosearch {
+            display: flex;
+            justify-content: center;
+
+            width: 100%;
+            height: 80px;
+
+            position: relative;
+        }
+
+        #logo {
+            /*display:inline-block;*/
+            font-weight: bold;
+            font-size: 50px;
+            /*
+                이렇게 해도 글자 원래크기랑 검색창 이미지 원래 크기는 합이 1000을 넘지 않는다.
+                */
+            width: 20%;
+            height: 100%;
+            line-height: 80px;
+            text-align: center;
+        }
+
+        #search {
+            /*display:inline-block;*/
+            margin-top: 10px;
+            margin-left: 50px;
+            width: 90%;
+            height: 100%;
+        }
+
+        #blank {
+            /*display:inline-block;*/
+            width: 90%;
+            height: 100%;
+
+            background: url("images\\search_bg.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        #category {
+            margin-top: 50px;
+
+            display: flex;
+            justify-content: space-around;
+
+            width: 100%;
+            height: 80px;
+        }
+
+        #category>div>a {
+            text-decoration: none;
+            color: black;
+            /*
+                이거 넣으면 이상하게 됨
+                font-size:100px;
+                */
+        }
+
+        #section2 {
+            margin: 0 auto;
+            width: 1000px;
+
+            /*
+            fixed 위치와 겹치지 않게 아랫요소에 마진을 많이 주자.
+            */
+            margin-top: 300px;
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            background-color: lightgray;
+        }
+
+        #section2>div:nth-child(1) {
+            text-align: center;
+        }
+
+        #section2>div:nth-child(1)>div:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+
+            background: url("images\\sample.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+
+        #section2>div:nth-child(2) {
+            text-align: center;
+        }
+
+        #section2>div:nth-child(2)>div {
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+        }
+
+        #section2>div:nth-child(3) {
+            text-align: center;
+            background-color: gray;
+        }
+
+        #section2>div:nth-child(3)>div:nth-child(1) {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #section2>div:nth-child(3)>div:nth-child(1)>div {
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+        }
+
+        #section2>div:nth-child(3)>div:nth-child(2) {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #section2>div:nth-child(3)>div:nth-child(2)>div {
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+        }
+
+        #section3 {
+            margin: 0 auto;
+            width: 1000px;
+
+            margin-top: 50px;
+        }
+
+        #section3>div:nth-child(1) {
+            text-align: center;
+            background: lightgray;
+
+            margin-bottom: 10px;
+        }
+
+        #section3>div:nth-child(2) {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            background-color: lightgray;
+        }
+
+        #section3>div:nth-child(2)>div {
+            width: 100px;
+            height: 70px;
+            padding: 10px;
+
+            text-align: center;
+        }
+
+        #section3>div:nth-child(2)>div:nth-child(5) {
+            background-color: gray;
+        }
+
+        #section3>div:nth-child(3) {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            background-color: lightgray;
+        }
+
+        #section3>div:nth-child(3)>div {
+            width: 100px;
+            height: 70px;
+            padding: 10px;
+
+            text-align: center;
+        }
+
+        #section3>div:nth-child(3)>div:nth-child(5) {
+            background-color: gray;
+        }
+
+        #section4 {
+            margin-top: 30px;
+
+            margin: 0 auto;
+            width: 1000px;
+        }
+
+        #section4>div {
+            margin-top: 10px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: lightpink;
+        }
+
+        #section4>div>div {
+            width: 200px;
+            height: 50px;
+            padding: 10px;
+            margin: 10px;
+
+            text-align: center;
+
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="top">
+            <div id="topright">
+                <div>login</div>
+                <div>join</div>
+                <div>event</div>
+                <div>my page</div>
+            </div>
+        </div>
+    </header>
+    <div id="center">
+        <aside id="aside1"></aside>
+        <section>
+            <section id="section1">
+                <div id="logosearch">
+                    <div id="logo">COWCOW</div>
+                    <div id="search">
+                        <div id="blank"></div>
+                        <div id="magnify"></div>
+                    </div>
+                </div>
+
+                <div id="category">
+                    <div><a href="#">TOP</a></div>
+                    <div><a href="#">BOTTOM</a></div>
+                    <div><a href="#">OUTER</a></div>
+                    <div><a href="#">ACCESSORY</a></div>
+                </div>
+            </section>
+
+            <section id="section2">
+                <div>
+                    <div></div>
+                    <div>프로필 사진</div>
+                </div>
+                <div>
+                    <div>회원이름</div>
+                    <div>환영합니다</div>
+                </div>
+                <div>
+                    <div>
+                        <div>적립금</div>
+                        <div>예치금</div>
+                        <div>할인쿠폰</div>
+                    </div>
+                    <div>
+                        <div>235</div>
+                        <div>0</div>
+                        <div>4</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section3">
+                <div>
+                    <div>나의 주문처리 현황(최근 3개월 기준)</div>
+                </div>
+                <div>
+                    <div>입금전</div>
+                    <div>배송준비중</div>
+                    <div>배송중</div>
+                    <div>배송완료</div>
+                    <div>
+                        <div>취소갯수</div>
+                        <div>교환갯수</div>
+                        <div>반품갯수</div>
+                    </div>
+                </div>
+                <div>
+                    <div>1</div>
+                    <div>1</div>
+                    <div>1</div>
+                    <div>2</div>
+                    <div>
+                        <div>1</div>
+                        <div>2</div>
+                        <div>0</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section4">
+                <div>
+                    <div>order</div>
+                    <div>주문내역조회</div>
+                </div>
+                <div>
+                    <div>profile</div>
+                    <div>회원정보</div>
+                </div>
+                <div>
+                    <div>wishlist</div>
+                    <div>관심상품</div>
+                </div>
+                <div>
+                    <div>mileage</div>
+                    <div>적립금</div>
+                </div>
+                <div>
+                    <div>coupon</div>
+                    <div>쿠폰</div>
+                </div>
+                <div>
+                    <div>board</div>
+                    <div>게시물 관리</div>
+                </div>
+                <div>
+                    <div>address</div>
+                    <div>배송 주소록 관리</div>
+                </div>
+            </section>
+        </section>
+        <aside id="aside2"></aside>
+    </div>
+</body>
+
+</html>

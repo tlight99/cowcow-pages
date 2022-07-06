@@ -1,0 +1,324 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  list-style: none;
+  overflow-x: hidden;
+}
+#top {
+  background-color: black;
+}
+
+#topright {
+  margin: 0 auto;
+  width: 1000px;
+  display: flex;
+  justify-content: flex-end;
+}
+#topright div {
+  color: white;
+  margin: 10px;
+  width: 100px;
+}
+
+#section1 {
+  margin: 0 auto;
+  width: 1000px;
+
+  /*
+        위에 있는 요소를 position: fixed;를 이용하여 고정하면 왼쪽에 위치합니다.
+        left: 50%;를 추가하여 시작 위치를 정가운데로 만듭니다.
+        transform: translateX( -50% );를 추가하여 요소 크기의 50%만큼 왼쪽을 이동합니다.
+        */
+
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+
+  z-index: 1;
+
+  background-color: white;
+}
+
+#logosearch {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  line-height: 80px;
+
+  position: relative;
+}
+#logo {
+  /*display:inline-block;*/
+  font-weight: bold;
+  font-size: 50px;
+  /*
+        이렇게 해도 글자 원래크기랑 검색창 이미지 원래 크기는 합이 1000을 넘지 않는다.
+        */
+  width: 31%;
+  line-height: 80px;
+  text-align: center;
+}
+#search {
+  /*display:inline-block;*/
+  margin-top: 10px;
+  margin-left: 50px;
+  width: 90%;
+  height: 100%;
+}
+#blank {
+  /*display:inline-block;*/
+  width: 90%;
+  height: 100%;
+
+  background: url("images\\search_bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#category {
+  margin-top: 50px;
+
+  display: flex;
+  justify-content: space-around;
+
+  width: 100%;
+  height: 80px;
+}
+#category > div > a {
+  text-decoration: none;
+  color: black;
+  /*
+        이거 넣으면 이상하게 됨
+        font-size:100px;
+        */
+}
+
+#section2 {
+  margin: 0 auto;
+  width: 1000px;
+  /*
+        fixed 위치와 겹치지 않게 아랫요소에 마진을 많이 주자.
+        */
+  margin-top: 300px;
+}
+
+#section2 > #article1 {
+  text-align: center;
+  font-size: 50px;
+}
+
+#space {
+  width: 1000px;
+  height: 170px;
+}
+label > #logintag {
+  text-align: center;
+  font-weight: bold;
+  font-size: x-large;
+}
+label > p {
+  margin-left: 250px;
+  margin-top: 60px;
+}
+label > input {
+  display: inline-flex;
+  margin-left: 250px;
+  color: black;
+  padding: 20px 10px;
+  width: 500px;
+  margin-bottom: 2px;
+  font-size: 15px;
+  border: 0 none;
+}
+label > #id,
+#password {
+  width: 500px;
+  border-bottom: 1px solid #cecece;
+  margin-left: 250px;
+  cursor: text;
+}
+label > p {
+  padding-top: 40px;
+}
+section > #login {
+  border: 1px solid #39373a;
+  width: 450px;
+  margin-left: 275px;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-top: 50px;
+  height: 65px;
+  text-align: center;
+  padding-top: 20px;
+  background-color: #39373a;
+  color: #cecece;
+}
+ul {
+  color: inherit;
+  padding: 50px;
+  width: 1000px;
+  margin-bottom: 170px;
+}
+li {
+  display: inline-flex;
+}
+#idsearch {
+  padding-right: 15px;
+  cursor: pointer;
+  padding-left: 295px;
+}
+#pwsearch {
+  padding-left: 15px;
+  cursor: pointer;
+}
+footer {
+  background-color: black;
+}
+#bottom {
+  text-align: center;
+
+  color: white;
+
+  width: 1600px;
+  margin: 0 auto;
+}
+
+#section3 {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+#section3 > div {
+  width: 300px;
+}
+#first {
+  text-align: center;
+}
+#section3 > #first > div > div:nth-child(3) {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+#kakao {
+  background: url("images\\kakao_icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  width: 20px;
+  height: 50px;
+}
+
+#kakao + div {
+  text-align: center;
+  line-height: center;
+}
+#section3 > #first > div > div:nth-child(4) {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+#tel {
+  background: url("images\\call.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  width: 20px;
+  height: 50px;
+}
+#telandtalk {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+#boardinfo {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+#section3 > #second > div:nth-child(5) {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+#section3 > #second > div > div {
+  width: 100px;
+}
+#secondphoto1 {
+  background: url("images\\check_ico1.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  width: 50px;
+  height: 100px;
+}
+#secondphoto2 {
+  background: url("images\\check_ico2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  width: 50px;
+  height: 100px;
+}
+#secondphoto3 {
+  background: url("images\\check_ico3.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  width: 50px;
+  height: 100px;
+}
+#third > div:nth-child(2) {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+#third > div:nth-child(2) > div:nth-child(1) {
+  background: url("images\\kr.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  width: 70px;
+  height: 200px;
+}
+#third > div:nth-child(2) > div:nth-child(2) {
+  background: url("images\\jp.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  width: 70px;
+  height: 200px;
+}
+#third > div:nth-child(2) > div:nth-child(3) {
+  background: url("images\\us.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  width: 70px;
+  height: 200px;
+}
+#third > div:nth-child(2) > div:nth-child(4) {
+  background: url("images\\tw.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  width: 70px;
+  height: 200px;
+}

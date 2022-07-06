@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>main</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      #top {
+        background-color: black;
+      }
+
+      #topright {
+        margin: 0 auto;
+        width: 1000px;
+
+        display: flex;
+        justify-content: flex-end;
+      }
+      #topright div {
+        color: white;
+
+        margin: 10px;
+        width: 100px;
+      }
+
+      #section1 {
+        margin: 0 auto;
+        width: 1000px;
+
+        /*
+            위에 있는 요소를 position: fixed;를 이용하여 고정하면 왼쪽에 위치합니다.
+            left: 50%;를 추가하여 시작 위치를 정가운데로 만듭니다.
+            transform: translateX( -50% );를 추가하여 요소 크기의 50%만큼 왼쪽을 이동합니다.
+            */
+
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+
+        z-index: 1;
+
+        background-color: white;
+      }
+
+      #logosearch {
+        display: flex;
+        justify-content: center;
+
+        width: 100%;
+        height: 80px;
+
+        position: relative;
+      }
+      #logo {
+        /*display:inline-block;*/
+        font-weight: bold;
+        font-size: 50px;
+        /*
+            이렇게 해도 글자 원래크기랑 검색창 이미지 원래 크기는 합이 1000을 넘지 않는다.
+            */
+        width: 20%;
+        height: 100%;
+        line-height: 80px;
+        text-align: center;
+      }
+      #search {
+        /*display:inline-block;*/
+        margin-top: 10px;
+        margin-left: 50px;
+        width: 90%;
+        height: 100%;
+      }
+      #blank {
+        /*display:inline-block;*/
+        width: 90%;
+        height: 100%;
+
+        background: url("images\\search_bg.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      #category {
+        margin-top: 50px;
+
+        display: flex;
+        justify-content: space-around;
+
+        width: 100%;
+        height: 80px;
+      }
+      #category > div > a {
+        text-decoration: none;
+        color: black;
+        /*
+            이거 넣으면 이상하게 됨
+            font-size:100px;
+            */
+      }
+
+      #section2 {
+        margin: 0 auto;
+        width: 1000px;
+        /*
+            fixed 위치와 겹치지 않게 아랫요소에 마진을 많이 주자.
+            */
+        margin-top: 300px;
+      }
+
+      #section2 > #article1 {
+        text-align: center;
+        font-size: 50px;
+      }
+
+      #article2 {
+        margin-top: 50px;
+        font-size: 50px;
+      }
+      #photogroup1 {
+        margin-top: 50px;
+
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        overflow-x: scroll;
+        /*overflow: auto;*/
+      }
+      /*
+        #photogruoup1  div{
+            width:400px;
+            height:500px;
+            border-radius:10px;
+            
+            background-repeat:no-repeat;
+            background-position:center;
+            background-size:contain;
+
+        }
+        */
+      /*
+        #photogroup1:nth-child(1){
+            background:url("images\\5550m.jpg");
+        }
+        #photogroup1:nth-child(2){
+            background:url("images\\5551w.jpg");
+        }
+        */
+      #photogroup1_1 {
+        background: url("images\\5550m.jpg");
+
+        min-width: 400px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+      #photogroup1_2 {
+        background: url("images\\5551w.jpg");
+
+        min-width: 400px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+      #photogroup1_3 {
+        background: url("images\\5551w.jpg");
+
+        min-width: 400px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+      #photogroup1_4 {
+        background: url("images\\5551w.jpg");
+
+        min-width: 400px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+      #article3 {
+        margin-top: 50px;
+        font-size: 50px;
+      }
+      .photogroup2 {
+        margin-top: 50px;
+
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+      }
+      #photogroup2_1 {
+        background: url("images\\5550m.jpg");
+
+        width: 300px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        margin-right: 10px;
+      }
+      #photogroup2_2 {
+        background: url("images\\5550m.jpg");
+
+        width: 300px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-right: 10px;
+      }
+      #photogroup2_3 {
+        background: url("images\\5550m.jpg");
+
+        width: 300px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-right: 10px;
+      }
+      #photogroup3_1 {
+        background: url("images\\5550m.jpg");
+
+        width: 300px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-right: 10px;
+      }
+      #photogroup3_2 {
+        background: url("images\\5550m.jpg");
+
+        width: 300px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-right: 10px;
+      }
+      #photogroup3_3 {
+        background: url("images\\5550m.jpg");
+
+        width: 300px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-right: 10px;
+      }
+      #photogroup4_1 {
+        background: url("images\\5550m.jpg");
+
+        width: 300px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-right: 10px;
+      }
+      #photogroup4_2 {
+        background: url("images\\5550m.jpg");
+
+        width: 300px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-right: 10px;
+      }
+      #photogroup4_3 {
+        background: url("images\\5550m.jpg");
+
+        width: 300px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-right: 10px;
+      }
+      #photogroup5_1 {
+        background: url("images\\5550m.jpg");
+
+        width: 300px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-right: 10px;
+      }
+      #photogroup5_2 {
+        background: url("images\\5550m.jpg");
+
+        width: 300px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-right: 10px;
+      }
+      #photogroup5_3 {
+        background: url("images\\5550m.jpg");
+
+        width: 300px;
+        height: 500px;
+        border-radius: 70px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin-right: 10px;
+      }
+
+      #center {
+        left: 300px;
+        right: 300px;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+      }
+      #aside1 {
+        width: 200px;
+        height: 600px;
+
+        position: relative;
+        /*
+            위에 있는 요소를 position: fixed;를 이용하여 고정하면 왼쪽에 위치합니다.
+            left: 50%;를 추가하여 시작 위치를 정가운데로 만듭니다.
+            transform: translateX( -50% );를 추가하여 요소 크기의 50%만큼 왼쪽을 이동합니다.
+            */
+
+        position: fixed;
+        left: 0%;
+        /*transform: translateX(-50%);*/
+
+        /*
+            background-color:aqua;
+            */
+      }
+      #aside2 {
+        width: 200px;
+        height: 1000px;
+
+        position: relative;
+        /*
+            위에 있는 요소를 position: fixed;를 이용하여 고정하면 왼쪽에 위치합니다.
+            
+            */
+        position: fixed;
+        right: 0%;
+
+        /*
+            background-color:aqua;
+            */
+      }
+
+      #aside1 > div {
+        position: absolute;
+        top: 50%;
+        /*background-color: pink;*/
+
+        width: 250px;
+        height: 300px;
+
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+      #aside2 > div {
+        position: absolute;
+        /*
+        aside1 300위치에 맞게 !!
+        */
+        top: 30%;
+        /*background-color: pink;*/
+
+        width: 200px;
+        height: 800px;
+      }
+
+      #beforearrow {
+        width: 20px;
+        height: 20px;
+
+        background: url("images\\left-arrow.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+      #afterarrow {
+        width: 20px;
+        height: 20px;
+
+        background: url("images\\arrow-right.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+      #flowdesk {
+        width: 200px;
+        height: 300px;
+
+        display: flex;
+        flex-wrap: nowrap;
+
+        align-items: center;
+
+        /* background: yellow;*/
+        overflow: hidden;
+      }
+      #flowdesk > div:nth-child(1) {
+        /*
+            display:inline-block;
+            */
+        /*
+        부모 속성열 변갱해도 계속 스트레치가 남아있는 현상이 있네요 저는 min-width를 줘서 강제로 줄어들지 못하게 수정
+        */
+        min-width: 200px;
+        height: 300px;
+
+        background: url("images\\1652337351_0.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+
+      #flowdesk > div:nth-child(2) {
+        /*
+            display:inline-block;
+            */
+        /*
+        부모 속성열 변갱해도 계속 스트레치가 남아있는 현상이 있네요 저는 min-width를 줘서 강제로 줄어들지 못하게 수정
+        */
+        min-width: 200px;
+        height: 300px;
+
+        background: url("images\\1652238048_0.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+
+      #aside2 > div > div:nth-child(1) {
+        width: 200px;
+        height: 100px;
+        background: url("images\\arrow1.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+      #aside2 > div > div:nth-child(2) {
+        width: 200px;
+        height: 100px;
+        background: url("images\\arrow2.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+
+      #aside2 > div > div:nth-child(3) {
+        width: 200px;
+        height: 600px;
+        border-radius: 20px 20px;
+
+        border-color: black;
+        border-style: solid;
+        border-width: 5px;
+      }
+      #aside2 > div > div > div:nth-child(1) {
+        width: 190px;
+        height: 100px;
+
+        background: url("images\\free-icon-shopping-cart-empty-side-view-34568.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        border-bottom: 5px solid black;
+      }
+      footer {
+        background-color: black;
+      }
+      #bottom {
+        text-align: center;
+
+        color: white;
+
+        width: 1600px;
+        margin: 0 auto;
+      }
+
+      #section3 {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+      }
+      #section3 > div {
+        width: 300px;
+      }
+      #first {
+        text-align: center;
+      }
+      #section3 > #first > div > div:nth-child(3) {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+      }
+      #kakao {
+        background: url("images\\kakao_icon.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        width: 20px;
+        height: 50px;
+      }
+
+      #kakao + div {
+        text-align: center;
+        line-height: center;
+      }
+      #section3 > #first > div > div:nth-child(4) {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+      }
+      #tel {
+        background: url("images\\call.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        width: 20px;
+        height: 50px;
+      }
+      #telandtalk {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+      }
+      #boardinfo {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+      }
+      #section3 > #second > div:nth-child(5) {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+      }
+      #section3 > #second > div > div {
+        width: 100px;
+      }
+      #secondphoto1 {
+        background: url("images\\check_ico1.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        width: 50px;
+        height: 100px;
+      }
+      #secondphoto2 {
+        background: url("images\\check_ico2.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        width: 50px;
+        height: 100px;
+      }
+      #secondphoto3 {
+        background: url("images\\check_ico3.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        width: 50px;
+        height: 100px;
+      }
+      #third > div:nth-child(2) {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+      }
+      #third > div:nth-child(2) > div:nth-child(1) {
+        background: url("images\\kr.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        width: 70px;
+        height: 200px;
+      }
+      #third > div:nth-child(2) > div:nth-child(2) {
+        background: url("images\\jp.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        width: 70px;
+        height: 200px;
+      }
+      #third > div:nth-child(2) > div:nth-child(3) {
+        background: url("images\\us.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        width: 70px;
+        height: 200px;
+      }
+      #third > div:nth-child(2) > div:nth-child(4) {
+        background: url("images\\tw.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        width: 70px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="top">
+        <div id="topright">
+          <div>login</div>
+          <div>join</div>
+          <div>event</div>
+          <div>my page</div>
+        </div>
+      </div>
+    </header>
+
+    <div id="center">
+      <aside id="aside1">
+        <div>
+          <div id="beforearrow"></div>
+          <div id="flowdesk">
+            <div></div>
+            <div></div>
+          </div>
+          <div id="afterarrow"></div>
+        </div>
+      </aside>
+
+      <section>
+        <section id="section1">
+          <div id="logosearch">
+            <div id="logo">COWCOW</div>
+            <div id="search">
+              <div id="blank"></div>
+              <div id="magnify"></div>
+            </div>
+          </div>
+
+          <div id="category">
+            <div><a href="#">TOP</a></div>
+            <div><a href="#">BOTTOM</a></div>
+            <div><a href="#">OUTER</a></div>
+            <div><a href="#">ACCESSORY</a></div>
+          </div>
+        </section>
+
+        <section id="section2">
+          <article id="article1">
+            <p>"It's choice — not chance —</p>
+            <p>that determines your destiny."</p>
+            <p>Unique, Unisex select shop "COWCOW"</p>
+          </article>
+          <article id="article2">
+            <p>NEW PRODUCT</p>
+            <div id="photogroup1">
+              <div id="photogroup1_1"></div>
+              <div id="photogroup1_2"></div>
+              <div id="photogroup1_3"></div>
+              <div id="photogroup1_4"></div>
+            </div>
+          </article>
+          <article id="article3">
+            <p>BEST PRODUCT</p>
+            <div class="photogroup2">
+              <div id="photogroup2_1"></div>
+              <div id="photogroup2_2"></div>
+              <div id="photogroup2_3"></div>
+            </div>
+            <div class="photogroup2">
+              <div id="photogroup3_1"></div>
+              <div id="photogroup3_2"></div>
+              <div id="photogroup3_3"></div>
+            </div>
+            <div class="photogroup2">
+              <div id="photogroup4_1"></div>
+              <div id="photogroup4_2"></div>
+              <div id="photogroup4_3"></div>
+            </div>
+            <div class="photogroup2">
+              <div id="photogroup5_1"></div>
+              <div id="photogroup5_2"></div>
+              <div id="photogroup5_3"></div>
+            </div>
+          </article>
+        </section>
+
+        <section id="section3">
+          <div id="first">
+            <div>
+              <div>customer center</div>
+              <div>전화보다 빠른 톡 상담!</div>
+              <div>
+                <div id="kakao"></div>
+                <div><p>카카오톡 문의하기</p></div>
+              </div>
+              <div>
+                <div id="tel"></div>
+                <div>####-####</div>
+              </div>
+            </div>
+
+            <div id="telandtalk">
+              <div>
+                <p>전화상담</p>
+                <p>평일 11:00~</p>
+                <p>17:00</p>
+                <p>점심 13:00~14:00</p>
+              </div>
+              <div>
+                <p>톡상담</p>
+                <p>평일 10:00~</p>
+                <p>17:00</p>
+                <p>점심 13:00~14:00</p>
+              </div>
+            </div>
+
+            <div id="board">
+              <div>게시판 상담</div>
+              <div id="boardinfo">
+                <div id="week">
+                  <p>평일</p>
+                  <p>9:00~18:00</p>
+                </div>
+                <div id="lunch">
+                  <p>점심</p>
+                  <p>13:00~14:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="second">
+            <div>
+              <div>NOTICE</div>
+              <div>더보기</div>
+            </div>
+            <hr />
+            <div>
+              <p>전북 정읍/익산 지역 cj 대한통훈 파업 장기화</p>
+              <p>품절 상품 환불 정책 변경 안내</p>
+              <p>2021년 적립금 소멸 안내</p>
+            </div>
+            <hr />
+            <div>
+              <div>
+                <div id="secondphoto1"></div>
+                <div>입금확인</div>
+              </div>
+              <div>
+                <div id="secondphoto2"></div>
+                <div>입고지연</div>
+              </div>
+              <div>
+                <div id="secondphoto3"></div>
+                <div>미확인입금자</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="third">
+            <div>
+              <p>상호:</p>
+              <p>에스엔패션그룹(주)사업장소제지</p>
+              <p>서울특별시 구로구</p>
+              <p>1599-1599</p>
+            </div>
+            <div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <aside id="aside2">
+        <div>
+          <div></div>
+          <div></div>
+          <div>
+            <div></div>
+
+            <div></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div id="bottom">
+        <p>TEL. 070-8623-2653 / E-MAIL cowx2cow@gmail.com</p>
+        <p>개인정보 보호책임자: 김진</p>
+        <p>
+          BUSINESS REG.NO : 612-13-91435 / ONLINE ORDER LICENSE :
+          2019-인천서구-0644 / CEO : 김진
+        </p>
+
+        <p>호스팅 업체: 카페24(주)</p>
+        <p>COPYRIGHT (c) cowcow ALL RIGHTS RESERVED.</p>
+      </div>
+    </footer>
+  </body>
+</html>
